@@ -1,0 +1,22 @@
+<ActionBar title="Chat">
+</ActionBar>
+<GridLayout class="chat-container">
+    
+    <GridLayout class="main-card">
+        <RadListView [items]="messages" >
+            <ng-template tkListItemTemplate let-item="item"  class='chat-list'>
+                <!-- [ngClass]="(item.from.name == this.user.name)? class='chat-list' : '' " --> 
+                <StackLayout orientation="horizontal" class="chat-message">
+                    <Label class="h4" [text]="item.from.name"> </Label>
+                    <Label text=":   "></Label>  
+                    <Label [text]="item.content"></Label>
+                </StackLayout>
+            </ng-template>
+        </RadListView>
+        
+    </GridLayout>
+    <FlexboxLayout flexDirection="column" class="chat-footer-container">
+        <TextField hint="ingrese mensaje" [(ngModel)]="messageContent" ></TextField>
+        <Button text="Presioname" (tap)="sendMessage(messageContent)"></Button>
+    </FlexboxLayout>
+</GridLayout>
